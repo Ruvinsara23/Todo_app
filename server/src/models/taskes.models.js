@@ -9,9 +9,15 @@ const taskesSchema =new mongoose.Schema({
       status:{
         type:String,
         require:true,
+      },
+      date:{
+        type:String,
+        require:true,
       }
+      
 });
 
+module.exports = mongoose.model('Task',taskesSchema);
 
 
 
