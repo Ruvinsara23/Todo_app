@@ -1,22 +1,26 @@
 const express = require('express');
 const mongoose=require('mongoose');
+const todoRouter= require('../src/routes/taskes.router');
+const api =require('../src/routes/api/api')
 const cors =require('cors');
 
+const dotenv= require('dotenv')
+
+dotenv.config();
+
 const app =express();
-const PORT=5000;
-const MONGODB_URL='mongodb+srv://ruvinsara23:abcd1234@todo.aogmd.mongodb.net/Todo?retryWrites=true&w=majority&appName=Todo'
+const MONGODB_URL=process.env.MONGODB_URL
+const PORT = process.env.PORT||8000
+
+
+
+
+
+app.use('/',api);
 app.use(express.json());
+app.use(cors());
+app.use('/', api);
 
-app.get('/',(req,res)=>{
-    
-    res.send("Welcome root Url")
-
-})
-app.post('/',(req,res)=>{
-    const {title}=req.body;
-    res.send(`add new task ${title}`
-    )
-})
 
 mongoose.connect(MONGODB_URL)
 .then(()=>console.log('mongo db is connect'))

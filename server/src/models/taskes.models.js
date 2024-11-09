@@ -9,10 +9,12 @@ const taskesSchema =new mongoose.Schema({
       status:{
         type:String,
         require:true,
+        default:"pending"
       },
       date:{
-        type:String,
+        type:Date,
         require:true,
+        default:Date.now,
       }
       
 });
