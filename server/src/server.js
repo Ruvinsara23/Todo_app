@@ -16,10 +16,10 @@ const PORT = process.env.PORT||8000
 
 
 
-app.use('/',api);
+
 app.use(express.json());
 app.use(cors());
-app.use('/', api);
+app.use('/api', api);
 
 
 mongoose.connect(MONGODB_URL)
