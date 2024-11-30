@@ -1,15 +1,31 @@
+import axios from "axios";
 import { useState } from "react"
 
 
+
 // eslint-disable-next-line react/prop-types
-const AddTaskFeild = ({addTask}) => {
+const AddTaskFeild = ({fetchTasks}) => {
     const [task,setTask] = useState('');
 
 
-    const handleAddTask=()=>{
+    const handleAddTask=async(e)=>{
+      e.preventDefault();
         if (task.trim()) {
-            addTask(task);
-            setTask('');
+          try{
+            const response = await axios.post('http://localhost:5000/api/add',{
+            title:task})
+            console.log(response.data)
+
+            if(response.status ===201){
+              console.log("Data sent successfully");
+              setTask("");
+              fetchTasks();
+
+            }
+               
+          }catch(error){
+            console.log("Error sending data",error)
+          }
           }
     }
 

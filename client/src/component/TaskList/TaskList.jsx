@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import TaskItem from "../TaskItem/TaskItem"
 
-const TaskList = ({taskList}) => {
+const TaskList = ({taskList,fetchTasks}) => {
   return (
     <div className="mt-4 w-full max-w-md">
       {taskList.length === 0 ? (
@@ -11,6 +11,7 @@ const TaskList = ({taskList}) => {
           <TaskItem
             key={index}
             task={task}
+            fetchTasks={fetchTasks}
           />
         ))
       )}

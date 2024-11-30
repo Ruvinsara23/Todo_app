@@ -4,14 +4,12 @@ import './App.css'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import TaskList from './component/TaskList/TaskList';
+import AddTaskFeild from './component/addTaskFeild/addTaskFeild';
 
 function App() {
   // const [tasks, setTasks] = useState([]);
   const [taskList,setTaskList] = useState ([])
 
-  // const addTask = (task) => {
-  //   setTasks([...tasks, task]);
-  // };
 
   const fetchTasks = async()=>{
     try {
@@ -36,8 +34,8 @@ function App() {
   
      <h1>Welcome Todo App </h1>
      <p >Add your todo list here and manage your taskes</p>
-     
-     <TaskList taskList={taskList}/>
+     <AddTaskFeild fetchTasks={fetchTasks} />
+     <TaskList taskList={taskList} fetchTasks={fetchTasks}/>
      
      </div>
   
